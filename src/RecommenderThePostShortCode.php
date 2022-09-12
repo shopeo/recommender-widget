@@ -19,7 +19,7 @@ class RecommenderThePostShortCode
         if ($sku) {
             $search = new RecommenderSearch();
             $result = $search->search($sku);
-            $body = '<div id="' . $id . '" class="wd_recommender" data-target="' . $target . '">';
+            $body = '<div id="' . $id . '" class="wd_recommender" data-link="' . $link . '" data-target="' . $target . '">';
             $body .= '<div class="wd_left_control"><</div>';
             $body .= '<div class="wd_recommender_list">';
             foreach ($result as $item) {
