@@ -1,0 +1,16 @@
+{
+  "name": "shopeo/recommender-widget",
+  "autoload": {
+    "psr-4": {
+      "Shopeo\\RecommenderWidget\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "shopeo",
+      "email": "hello@shopeo.cn",
+      "homepage": "https://www.shopeo.cn"
+    }
+  ],
+  "require": {}
+}
