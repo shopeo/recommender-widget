@@ -5,6 +5,7 @@
 }
 
 .wd_recommender .wd_left_control, .wd_recommender .wd_right_control {
+    position: absolute;
     background-color: white;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     border-radius: 100%;
@@ -15,6 +16,7 @@
     font-size: 18pt;
     top: 40%;
     opacity: 0.75;
+    z-index: 2;
 }
 
 .wd_recommender .wd_left_control:hover, .wd_recommender .wd_right_control:hover, .wd_recommender_item_box:hover {
@@ -22,12 +24,10 @@
 }
 
 .wd_recommender .wd_left_control {
-    position: absolute;
     left: 0;
 }
 
 .wd_recommender .wd_right_control {
-    position: absolute;
     right: 0;
 }
 
