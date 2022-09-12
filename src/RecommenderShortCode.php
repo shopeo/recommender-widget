@@ -12,12 +12,13 @@ class RecommenderShortCode
     {
         $id = $atts['id'];
         $sku = $atts['sku'];
+        $target = $atts['target'];
         $link = empty($atts['link']) ? true : false;
         $body = '';
         if ($sku) {
             $search = new RecommenderSearch();
             $result = $search->search($sku);
-            $body = '<div id="' . $id . '" class="wd_recommender">';
+            $body = '<div id="' . $id . '" class="wd_recommender" data-target="' . $target . '">';
             $body .= '<div class="wd_left_control"><</div>';
             $body .= '<div class="wd_recommender_list">';
             foreach ($result as $item) {
