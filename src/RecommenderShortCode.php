@@ -10,13 +10,14 @@ class RecommenderShortCode
 
     public function render($atts = [], $content = null)
     {
+        $id = $atts['id'];
         $sku = $atts['sku'];
         $link = empty($atts['link']) ? true : false;
         $body = '';
         if ($sku) {
             $search = new RecommenderSearch();
             $result = $search->search($sku);
-            $body = '<div class="wd_recommender">';
+            $body = '<div id="' . $id . '" class="wd_recommender">';
             $body .= '<div class="wd_left_control"><</div>';
             $body .= '<div class="wd_recommender_list">';
             foreach ($result as $item) {

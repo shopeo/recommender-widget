@@ -1,9 +1,9 @@
 # Recommender Widget
 
 ```
-[recommender sku="C123458" link="true"]
+[recommender id="re-123" sku="C123458" link="false"]
 ```
 
 ```
-[recommender-the-post]
+[recommender-the-post id="re-123" link="false"]
 ```
