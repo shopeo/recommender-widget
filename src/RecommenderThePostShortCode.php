@@ -26,7 +26,7 @@ class RecommenderThePostShortCode
                 if ($link) {
                     $body .= '<a href="' . $item->permalink . '">';
                 } else {
-                    $body .= '<div class="wd_recommender_item_box" data-json="' . esc_html(json_encode($item)) . '">';
+                    $body .= '<div class="wd_recommender_item_box" data-product-id="' . $item->product_id . '">';
                 }
                 $body .= '<div class="wd_recommender_item">';
                 $body .= '<img src="' . $item->image_src . '"/>';
