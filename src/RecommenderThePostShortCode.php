@@ -22,10 +22,12 @@ class RecommenderThePostShortCode
             $body .= '<div class="wd_left_control"><</div>';
             $body .= '<div class="wd_recommender_list">';
             foreach ($result as $item) {
-                $body .= '<a href="' . $item->permalink . '"><div class="wd_recommender_item">';
+                $body .= '<a href="' . $item->permalink . '">';
+                $body .= '<div class="wd_recommender_item">';
                 $body .= '<img src="' . $item->image_src . '"/>';
                 $body .= '<span>' . $item->price_html . '</span>';
                 $body .= '</div></a>';
+                $body .= '</a>';
             }
             $body .= '</div>';
             $body .= '<div class="wd_right_control">></div>';
