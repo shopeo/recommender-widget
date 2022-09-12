@@ -2,8 +2,6 @@
 
 namespace Shopeo\RecommenderWidget;
 
-use Shopeo\RecommenderWidget\RecommenderSearch;
-
 class RecommenderThePostShortCode
 {
     public function __construct()
@@ -14,6 +12,7 @@ class RecommenderThePostShortCode
     public function render($atts = [], $content = null)
     {
         $sku = get_post_meta(get_the_ID(), '_sku', true);
+        $link = empty($atts['link']) ? true : false;
         $body = '';
         if ($sku) {
             $search = new RecommenderSearch();
@@ -22,12 +21,20 @@ class RecommenderThePostShortCode
             $body .= '<div class="wd_left_control"><</div>';
             $body .= '<div class="wd_recommender_list">';
             foreach ($result as $item) {
-                $body .= '<a href="' . $item->permalink . '">';
+                if ($link) {
+                    $body .= '<a href="' . $item->permalink . '">';
+                } else {
+                    $body .= '<div class="wd_recommender_item_box" data-json="' . esc_html(json_encode($item)) . '">';
+                }
                 $body .= '<div class="wd_recommender_item">';
                 $body .= '<img src="' . $item->image_src . '"/>';
                 $body .= '<span>' . $item->price_html . '</span>';
-                $body .= '</div></a>';
-                $body .= '</a>';
+                $body .= '</div>';
+                if ($link) {
+                    $body .= '</a>';
+                } else {
+                    $body .= '</div>';
+                }
             }
             $body .= '</div>';
             $body .= '<div class="wd_right_control">></div>';

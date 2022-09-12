@@ -28,7 +28,7 @@ class RecommenderShortCode
                 $body .= '<div class="wd_recommender_item">';
                 $body .= '<img src="' . $item->image_src . '"/>';
                 $body .= '<span>' . $item->price_html . '</span>';
-                $body .= '</div></a>';
+                $body .= '</div>';
                 if ($link) {
                     $body .= '</a>';
                 } else {
