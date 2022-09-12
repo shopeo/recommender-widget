@@ -74,6 +74,7 @@ if (!function_exists('recommender_widget_scripts')) {
         }
         wp_enqueue_style('recommender-widget-plugin-style', plugin_dir_url(__FILE__) . '/assets/app.css', array(), $version);
         wp_enqueue_script('recommender-widget-plugin-script', plugin_dir_url(__FILE__) . '/assets/app.js', array('jquery'), $version);
+        wp_localize_script('recommender-widget-plugin-script', 'recommender_widget_plugin_ajax', array('ajax_url' => admin_url('admin-ajax.php')));
     }
 }
 add_action('wp_enqueue_scripts', 'recommender_widget_scripts');
