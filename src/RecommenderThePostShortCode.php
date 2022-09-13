@@ -11,10 +11,10 @@ class RecommenderThePostShortCode
 
     public function render($atts = [], $content = null)
     {
-        $id = $atts['id'];
+        $id = array_key_exists('id', $atts) ? $atts['id'] : '';
         $sku = get_post_meta(get_the_ID(), '_sku', true);
-        $target = $atts['target'];
-        $link = empty($atts['link']) ? true : false;
+        $target = array_key_exists('target', $atts) ? $atts['target'] : '';
+        $link = array_key_exists('link', $atts) ? true : false;
         $body = '';
         if ($sku) {
             $search = new RecommenderSearch();
