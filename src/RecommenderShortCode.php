@@ -10,10 +10,10 @@ class RecommenderShortCode
 
     public function render($atts = [], $content = null)
     {
-        $id = array_key_exists('id', $atts) ? $atts['id'] : '';
-        $sku = array_key_exists('sku', $atts) ? $atts['sku'] : '';
-        $target = array_key_exists('target', $atts) ? $atts['target'] : '';
-        $link = array_key_exists('link', $atts) ? true : false;
+        $id = (is_array($atts) && array_key_exists('id', $atts)) ? $atts['id'] : '';
+        $sku = (is_array($atts) && array_key_exists('sku', $atts)) ? $atts['sku'] : '';
+        $target = (is_array($atts) && array_key_exists('target', $atts)) ? $atts['target'] : '';
+        $link = (is_array($atts) && array_key_exists('link', $atts)) ? true : false;
         $body = '';
         if ($sku) {
             $search = new RecommenderSearch();
