@@ -16,6 +16,10 @@ class RecommenderSetting
         if (isset($input['search'])) {
             $sanitary_values['search'] = sanitize_text_field($input['search']);
         }
+
+        if (isset($input['url'])) {
+            $sanitary_values['url'] = sanitize_text_field($input['url']);
+        }
         return $sanitary_values;
     }
 
@@ -51,11 +55,17 @@ class RecommenderSetting
         printf('<select name="recommender_widget_option_group[search]" id="recommender_widget_search">%s</select>', $options);
     }
 
+    function url_callback()
+    {
+        printf('<input class="regular-text" type="url" name="recommender_widget_option_group[url]" id="recommender_widget_url" value="%s">', isset(get_option('recommender_widget_option_group')['url']) ? esc_attr(get_option('recommender_widget_option_group')['url']) : '');
+    }
+
     function page_init()
     {
         register_setting('recommender_widget_option_group', 'recommender_widget_option_group', array($this, 'sanitize'));
         add_settings_section('recommender_widget_setting_section', __('Settings', 'recommender-widget'), array($this, 'section_info'), 'options-wd-recommender');
-        add_settings_field('recommender_widget_search', __('search', 'recommender-widget'), array($this, 'search_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
+        add_settings_field('recommender_widget_search', __('Search', 'recommender-widget'), array($this, 'search_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
+        add_settings_field('recommender_widget_url', __('URL', 'recommender-widget'), array($this, 'url_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
     }
 
     function page()
