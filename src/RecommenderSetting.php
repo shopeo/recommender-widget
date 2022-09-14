@@ -13,8 +13,8 @@ class RecommenderSetting
     function sanitize($input)
     {
         $sanitary_values = array();
-        if (isset($input['search'])) {
-            $sanitary_values['search'] = sanitize_text_field($input['search']);
+        if (isset($input['type'])) {
+            $sanitary_values['type'] = sanitize_text_field($input['type']);
         }
 
         if (isset($input['url'])) {
@@ -28,7 +28,7 @@ class RecommenderSetting
         printf(__('Section info', 'recommender-widget'));
     }
 
-    function search_callback()
+    function type_callback()
     {
         $options = '';
         $arr = array(
@@ -47,12 +47,12 @@ class RecommenderSetting
         );
         foreach ($arr as $item) {
             $select = '';
-            if (isset(get_option('recommender_widget_option_group')['search']) && esc_attr(get_option('recommender_widget_option_group')['search']) == $item['value']) {
+            if (isset(get_option('recommender_widget_option_group')['type']) && esc_attr(get_option('recommender_widget_option_group')['type']) == $item['value']) {
                 $select = 'selected';
             }
             $options .= sprintf('<option value="%1$s" %2$s>%3$s</option>', $item['value'], $select, $item['name']);
         }
-        printf('<select name="recommender_widget_option_group[search]" id="recommender_widget_search">%s</select>', $options);
+        printf('<select name="recommender_widget_option_group[type]" id="recommender_widget_type">%s</select>', $options);
     }
 
     function url_callback()
@@ -64,7 +64,7 @@ class RecommenderSetting
     {
         register_setting('recommender_widget_option_group', 'recommender_widget_option_group', array($this, 'sanitize'));
         add_settings_section('recommender_widget_setting_section', __('Settings', 'recommender-widget'), array($this, 'section_info'), 'options-wd-recommender');
-        add_settings_field('recommender_widget_search', __('Search', 'recommender-widget'), array($this, 'search_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
+        add_settings_field('recommender_widget_type', __('Type', 'recommender-widget'), array($this, 'type_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
         add_settings_field('recommender_widget_url', __('URL', 'recommender-widget'), array($this, 'url_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
     }
 

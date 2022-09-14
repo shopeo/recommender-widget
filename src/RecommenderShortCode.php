@@ -14,6 +14,10 @@ class RecommenderShortCode
         $sku = (is_array($atts) && array_key_exists('sku', $atts)) ? $atts['sku'] : '';
         $target = (is_array($atts) && array_key_exists('target', $atts)) ? $atts['target'] : '';
         $link = (is_array($atts) && array_key_exists('link', $atts)) ? true : false;
+        $type = (is_array($atts) && array_key_exists('type', $atts)) ? $atts['type'] : '';
+        $limit = (is_array($atts) && array_key_exists('limit', $atts)) ? $atts['limit'] : '';
+        $width = (is_array($atts) && array_key_exists('width', $atts)) ? $atts['width'] : '';
+        $height = (is_array($atts) && array_key_exists('height', $atts)) ? $atts['height'] : '';
         $body = '';
         if ($sku) {
             $search = new RecommenderSearch();

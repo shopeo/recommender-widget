@@ -80,4 +80,3 @@ if (!function_exists('recommender_widget_scripts')) {
     }
 }
 add_action('wp_enqueue_scripts', 'recommender_widget_scripts');
-
