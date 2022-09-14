@@ -16,10 +16,6 @@ class RecommenderSetting
         if (isset($input['search'])) {
             $sanitary_values['search'] = sanitize_text_field($input['search']);
         }
-
-        if (isset($input['recommender'])) {
-            $sanitary_values['recommender'] = sanitize_text_field($input['recommender']);
-        }
         return $sanitary_values;
     }
 
@@ -33,16 +29,16 @@ class RecommenderSetting
         $options = '';
         $arr = array(
             array(
-                'value' => 'opt1',
-                'name' => __('Opt1', 'recommender-widget')
+                'value' => 'visually_similar_search',
+                'name' => __('Visually Similar Search', 'recommender-widget')
             ),
             array(
-                'value' => 'opt2',
-                'name' => __('Opt2', 'recommender-widget')
+                'value' => 'visually_similar_recommendation',
+                'name' => __('Visually Similar Recommendation', 'recommender-widget')
             ),
             array(
-                'value' => 'opt3',
-                'name' => __('Opt3', 'recommender-widget')
+                'value' => 'combined_recommendations',
+                'name' => __('Combined Recommendations', 'recommender-widget')
             )
         );
         foreach ($arr as $item) {
@@ -55,17 +51,11 @@ class RecommenderSetting
         printf('<select name="recommender_widget_option_group[search]" id="recommender_widget_search">%s</select>', $options);
     }
 
-    function recommender_callback()
-    {
-        printf('<input class="regular-text" type="text" name="recommender_widget_option_group[recommender]" id="recommender_widget_recommender" value="%s">', isset(get_option('recommender_widget_option_group')['recommender']) ? esc_attr(get_option('recommender_widget_option_group')['recommender']) : '');
-    }
-
     function page_init()
     {
         register_setting('recommender_widget_option_group', 'recommender_widget_option_group', array($this, 'sanitize'));
         add_settings_section('recommender_widget_setting_section', __('Settings', 'recommender-widget'), array($this, 'section_info'), 'options-wd-recommender');
         add_settings_field('recommender_widget_search', __('search', 'recommender-widget'), array($this, 'search_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
-        add_settings_field('recommender_widget_recommender', __('recommender', 'recommender-widget'), array($this, 'recommender_callback'), 'options-wd-recommender', 'recommender_widget_setting_section');
     }
 
     function page()
