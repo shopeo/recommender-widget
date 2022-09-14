@@ -15,6 +15,7 @@
 
 require_once 'vendor/autoload.php';
 
+use Shopeo\RecommenderWidget\RecommenderSetting;
 use Shopeo\RecommenderWidget\RecommenderShortCode;
 use Shopeo\RecommenderWidget\RecommenderThePostShortCode;
 
@@ -47,7 +48,7 @@ register_activation_hook(__FILE__, 'recommender_widget_activate');
 if (!function_exists('recommender_widget_deactivate')) {
     function recommender_widget_deactivate()
     {
-
+        delete_option('recommender_widget_option_group');
     }
 }
 register_deactivation_hook(__FILE__, 'recommender_widget_deactivate');
@@ -63,6 +64,7 @@ add_action('init', 'recommender_widget_load_textdomain');
 
 $recommender_short_code = new RecommenderShortCode();
 $recommender_the_post_short_code = new RecommenderThePostShortCode();
+$recommender_setting = new RecommenderSetting();
 
 if (!function_exists('recommender_widget_scripts')) {
     function recommender_widget_scripts()
@@ -78,3 +80,4 @@ if (!function_exists('recommender_widget_scripts')) {
     }
 }
 add_action('wp_enqueue_scripts', 'recommender_widget_scripts');
+
