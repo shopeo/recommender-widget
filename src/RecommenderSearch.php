@@ -4,13 +4,14 @@ namespace Shopeo\RecommenderWidget;
 
 class RecommenderSearch
 {
-    public function search($sku, $type = '')
+    public function search($sku, $limit = 10, $type = '')
     {
         $url = isset(get_option('recommender_widget_option_group')['url']) ? esc_attr(get_option('recommender_widget_option_group')['url']) : 'https://vs.warp-driven.com/img/vs_search';
         $url .= '?' . http_build_query(array(
                     'sku' => $sku,
                     'table_name' => 'woolworlds_products',
-                    'type' => $type
+                    'type' => $type,
+                    'limit' => $limit
                 )
             );
         $response = wp_remote_post($url);

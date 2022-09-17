@@ -80,3 +80,11 @@ if (!function_exists('recommender_widget_scripts')) {
     }
 }
 add_action('wp_enqueue_scripts', 'recommender_widget_scripts');
+
+if (!function_exists('recommender_widget_related')) {
+    function recommender_widget_related()
+    {
+        echo do_shortcode('[recommender-the-post id="recommender" link="true"]');
+    }
+}
+add_action('woocommerce_after_single_product', 'recommender_widget_related');
