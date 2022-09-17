@@ -34,7 +34,6 @@ class RecommenderShortCode
                     <ul class="products related">
                         <?php
                         foreach ($result as $item) {
-                            $post_object = get_post($item);
                             $post_object = get_post($item->product_id);
                             setup_postdata($GLOBALS['post'] =& $post_object);
                             wc_get_template_part('content', 'product');
