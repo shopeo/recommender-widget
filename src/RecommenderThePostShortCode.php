@@ -32,7 +32,7 @@ class RecommenderThePostShortCode
                  data-target="<?php echo $target; ?>">
                 <div class="wd_left_control"><</div>
                 <div class="wd_recommender_list woocommerce">
-                    <ul class="products">
+                    <ul class="products related">
                         <?php
                         foreach ($result as $item) {
                             $post_object = get_post($item->product_id);

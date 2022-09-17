@@ -56,3 +56,7 @@
 .wd_recommender_list .product .woocommerce-loop-product__title {
     white-space: initial;
 }
+
+.woocommerce-loop-product__title {
+    font-size: 14px !important;
+}

@@ -16,7 +16,7 @@ class RecommenderShortCode
         $link = (is_array($atts) && array_key_exists('link', $atts)) ? true : false;
         $type = (is_array($atts) && array_key_exists('type', $atts)) ? $atts['type'] : '';
         $limit = (is_array($atts) && array_key_exists('limit', $atts)) ? $atts['limit'] : '';
-        $width = (is_array($atts) && array_key_exists('width', $atts)) ? $atts['width'] : '';
+        $width = (is_array($atts) && array_key_exists('width', $atts)) ? $atts['width'] : '240px';
         if ($sku) {
             $search = new RecommenderSearch();
             $result = $search->search($sku, $limit, $type);
@@ -31,10 +31,12 @@ class RecommenderShortCode
                  data-target="<?php echo $target; ?>">
                 <div class="wd_left_control"><</div>
                 <div class="wd_recommender_list woocommerce">
-                    <ul class="products">
+                    <ul class="products related">
                         <?php
+                        $result = [4722, 4711, 4668, 4667, 4634, 4618];
                         foreach ($result as $item) {
-                            $post_object = get_post($item->product_id);
+                            $post_object = get_post($item);
+//                            $post_object = get_post($item->product_id);
                             setup_postdata($GLOBALS['post'] =& $post_object);
                             wc_get_template_part('content', 'product');
                         }
